@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var showDetails = true
+    
+    
     var body: some View {
         VStack {
             Text("Whispr")
@@ -16,19 +20,26 @@ struct ContentView: View {
                 .foregroundColor(Color.blue)
                 .multilineTextAlignment(.center)
             
-            Image(systemName: "mic.circle.fill")
-                .resizable()
-//                .imageScale(.medium)
-                .frame(width: 100,height: 100 )
-                .foregroundColor(Color.blue)
-                
-                //when clicked turn red
-            Text("Click to start recording")
-                .font(.body)
-                .fontWeight(.bold)
-                .foregroundColor(Color.blue)
-                .multilineTextAlignment(.center)
-                .padding()
+            Button(action: {
+                self.showDetails.toggle()
+            }){
+                Image(systemName: "mic.circle.fill")
+                    .resizable()
+                    .frame(width: 100,height: 100 )
+                    .foregroundColor(Color.blue)
+            }
+//            TODO: when button clicked turn red
+//            when button clicked remove text
+            if showDetails {
+                Text("Click to start recording")
+                    .font(.body)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.blue)
+                    .multilineTextAlignment(.center)
+                    .padding()
+            }
+            
+            
         }
         .padding()
         //options where to send after recording
@@ -41,7 +52,19 @@ struct ContentView: View {
             
         }
         //bottom bar
-        //        info.square
+        TabView{
+            ContentView()
+                .tabItem {
+                    Image(systemName: "info.square")
+                    Text("Info")
+                }
+            InfoView()
+                .tabItem {
+                    Image(systemName: "info.square")
+                    Text("Info")
+                }
+        }
+        //
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  RecordingView.swift
 //  Demo App
 //
 //  Created by Chris Ho on 6/19/23.
@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RecordingView: View {
     
-    @State var showDetails = true
+    @State var showDetails = false
     
     
     var body: some View {
         VStack {
-            Text("Whispr")
+            Text("iWhisper")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(Color.blue)
                 .multilineTextAlignment(.center)
+            
             
             Button(action: {
                 self.showDetails.toggle()
@@ -30,7 +31,7 @@ struct ContentView: View {
             }
 //            TODO: when button clicked turn red
 //            when button clicked remove text
-            if showDetails {
+            if !showDetails {
                 Text("Click to start recording")
                     .font(.body)
                     .fontWeight(.bold)
@@ -39,37 +40,25 @@ struct ContentView: View {
                     .padding()
             }
             
-            
+            HStack{
+                Text("Send text via message")
+    //            message.fill
+    //            square.and.arrow.up
+                Text("Send text via ")
         }
         .padding()
         //options where to send after recording
-        HStack{
-            Text("Send text via message")
-//            message.fill
-//            square.and.arrow.up
-            Text("Send text via ")
+        
             
             
         }
-        //bottom bar
-        TabView{
-            ContentView()
-                .tabItem {
-                    Image(systemName: "info.square")
-                    Text("Info")
-                }
-            InfoView()
-                .tabItem {
-                    Image(systemName: "info.square")
-                    Text("Info")
-                }
-        }
-        //
+       
+        
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RecordingView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RecordingView()
     }
 }
